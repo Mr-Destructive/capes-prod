@@ -66,9 +66,7 @@ class AddMailView(LoginRequiredMixin, CreateView):
         context["schedule_type"] = form.instance.schedule_type
         from articleFetcher import schedule_mail
 
-        mailobj = ScheduledMail.objects.get(pk=obj.id)
-        mailobj.status = "Scheduled"
-        mailobj.save()
+        mailobj = ScheduledMail.objects.filter(pk=obj.id).update(status="Scheduled")
         schedule_mail.schedule_mail(context, obj)
         return redirect("home")
 

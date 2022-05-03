@@ -44,9 +44,7 @@ def send_mail(
         server.login(sender_email, password)
         server.sendmail(sender_email, list(reciever_email), message.as_string())
 
-        obj = ScheduledMail.objects.get(pk=mail_obj.id)
-        obj.status = "Sent"
-        obj.save()
+        ScheduledMail.objects.filter(pk=mail_obj.id).update(status="Sent")
 
 
 def schedule_mail(context, mail_obj):
