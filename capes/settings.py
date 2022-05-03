@@ -13,7 +13,7 @@ ALLOWED_HOSTS = ["*"]
 
 
 INSTALLED_APPS = [
-    "django.contrib.admin",
+    #    "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
@@ -88,7 +88,6 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 DATABASE_URL = os.getenv("DATABASE_URL")
 DATABASES = {
-    "ENGINE": "django.db.backends.postgresql",
     "default": dj_database_url.config(default=DATABASE_URL, conn_max_age=1800),
 }
 AUTH_USER_MODEL = "user.Profile"
