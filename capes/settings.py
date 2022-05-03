@@ -86,8 +86,10 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+DATABASE_URL = os.getenv("DATABASE_URL")
 DATABASES = {
-    "default": dj_database_url.config(os.getenv("DATABASE_URL"), conn_max_age=1800)
+    "ENGINE": "django.db.backends.postgresql",
+    "default": dj_database_url.config(default=DATABASE_URL, conn_max_age=1800),
 }
 AUTH_USER_MODEL = "user.Profile"
 LOGIN_REDIRECT_URL = "home"
